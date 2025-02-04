@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8">
+
+    <!-- Ensures responsive design on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Improves compatibility with older versions of Internet Explorer -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Website title displayed in the browser tab -->
+    <title>MindBand</title>
+
+    <!-- Link to external stylesheet for styling -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/themes/light.css"/>
+    <script type="module"
+            src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/shoelace-autoloader.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- Website header, includes navigation and hero section -->
+<header id="home">
+    <!-- Navigation bar -->
+    <nav>
+        <div id="logo-container">
+            <!-- Cerevo company logo -->
+            <a href="#home"><img id="logo-svg" src="images/logo.svg" alt="Cerevo logo"></a>
+        </div>
+
+        <!-- This label nests 3 <span> tags to create a burger menu -->
+        <label class="burger-label" for="burger-toggle" aria-controls="navigation">
+            <svg class="burger-svg" viewBox="0 0 100 100" width="35">
+                <rect class="bar top"
+                      width="70"
+                      height="10"
+                      x="15"
+                      y="25"
+                      rx="5"
+                ></rect>
+                <rect class="bar top"
+                      width="70"
+                      height="10"
+                      x="15"
+                      y="45"
+                      rx="5"
+                ></rect>
+                <rect class="bar top"
+                      width="70"
+                      height="10"
+                      x="15"
+                      y="65"
+                      rx="5"
+                ></rect>
+            </svg>
+        </label>
+
+        <!-- The preceding label is linked to this input tag. When the user
+        selects the burger menu, this checkbox is checked -->
+        <input id="burger-toggle" type="checkbox">
+
+        <!-- Navigation links -->
+        <ul class="responsive-design">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#how-it-works">How it works</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#about-us">About us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Dark mode toggle switch -->
+    <div id="darkmode-switch"></div>
+
+    <!-- Hero section with main content -->
+    <div class="header-content-container">
+
+        <!-- Left side: Images of the brain sketch and smartwatch -->
+        <div class="header-content-left">
+            <img id="brain-scribble" src="images/brain-scribble.svg" alt="A scribble of a brain">
+            <img id="white-watch" src="images/white-watch.svg" alt="MindBand Smartwatch with an aqua coloured band">
+        </div>
+
+        <!-- Right side: Introduction text and call-to-action button -->
+        <div class="header-right-container">
+            <div id="header-right" class="responsive-design">
+
+                <!-- Main heading -->
+                <h1 class="responsive-text-large" id="mindband-heading">
+                    Introducing the <span id="mindband-span">MindBand</span> SmartWatch
+                </h1>
+
+                <!-- Short description -->
+                <p class="responsive-text-small" id="mindband-description">
+                    The first ever smartwatch that can read your thoughts. Why tap or swipe when you can think and make
+                    it happen?
+                </p>
+
+                <!-- Call-to-action button -->
+                <div id="button-container">
+                    <button class="responsive-button button1" id="learn-more-button">Learn more</button>
+                </div>
+                <div id="star-scribble-container">
+                    <img id="star-scribble" src="images/star-scribble.png" alt="Scribble of a star">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main content sections -->
+<main>
+    <section id="how-it-works">
+        <h2 class="section-heading responsive-text-large">How it works</h2>
+        <div id="how-it-works-container">
+            <div id="how-it-works-left"></div>
+
+            <div id="how-it-works-right" class="custom-icons">
+                <sl-details summary="Toggle Me" class="custom-icons">
+                    <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+                    <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.
+                </sl-details>
+
+                <sl-details summary="Toggle Me" class="custom-icons">
+                    <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+                    <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.
+                </sl-details>
+
+                <sl-details summary="Toggle Me" class="custom-icons">
+                    <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
+                    <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.
+                </sl-details>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="features"></section>
+    <section id="about-us"></section>
+    <section id="contact"></section>
+</main>
+
+<!-- Link to external JavaScript files -->
+<script src="main.js"></script>
+</body>
+</html>

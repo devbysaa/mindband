@@ -1,0 +1,361 @@
+/* UNIVERSAL STYLING */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+/* Import More Sugar font */
+@font-face {
+    font-family: 'rubik-regular';
+    src: url('fonts/rubik-regular.ttf') format('truetype');
+}
+
+/* Import More Sugar font */
+@font-face {
+    font-family: "more-sugar";
+    src: url('fonts/more-sugar.ttf') format('truetype');
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Apply global styles to all elements */
+* {
+    box-sizing: border-box; /* Ensure padding and border are included in element width & height */
+    color: #393346;
+    font-family: 'rubik-regular', sans-serif;
+    /* Remove default padding and margin added by browsers */
+    padding: 0;
+    margin: 0;
+}
+
+/* HEADER STYLING */
+
+/* Displays the nav bar and main content of the header on top of each other */
+header {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Responsive text with adaptive font size and line height for large headings & text.
+ * The clamp() function dynamically adjusts values while keeping them within a minimum and maximum range */
+.responsive-text-large {
+    font-size: clamp(40px, 3vw, 100px);
+    line-height: clamp(60px, 5vw, 150px);
+}
+
+/* Responsive text with adaptive font size and line height for paragraphs */
+.responsive-text-small {
+    line-height: clamp(25px, 1.5vw, 100px);
+}
+
+/* Responsive design with adaptive font size, row gap, and border radius */
+.responsive-design {
+    font-size: clamp(15px, 1vw, 40px);
+    row-gap: clamp(5px, 1vw, 100px);
+    border-radius: clamp(8px, 2vw, 30px);
+}
+
+/* Responsive design with adaptive font size and border radius for buttons */
+.responsive-button {
+    font-size: clamp(15px, 1vw, 50px);
+    border-radius: clamp(8px, 1vw, 30px);
+}
+
+nav {
+    display: flex; /* Nav bar links are displayed beside each other */
+    background-color: #fff;
+    justify-content: space-between; /* Spaces items evenly */
+    padding: 0 5vw;
+    z-index: 1; /* Ensures it stays above lower elements */
+    position: fixed; /* Nav bar will stays fixed at the top while scrolling */
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Container for company logo */
+#logo-container {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    padding: 8px 0;
+}
+
+#logo-svg {
+    width: 50px;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space evenly between nav bar links */
+    list-style: none;
+    width: 50vw;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #a175ff;
+}
+
+/* HAMBURGER MENU STYLING & MEDIA QUERIES */
+
+/* Targets a checkbox input tag linked with the burger menu */
+#burger-toggle {
+    display: none;
+}
+
+/* Targets a label that nests 3 <span> tags to create a burger menu. The display is
+ * hidden until certain media queries apply */
+.burger-label {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    border: 0.18em solid #393346;
+    border-radius: 0.6em;
+}
+
+.burger-svg {
+    fill: #393346;
+}
+
+/* MEDIA QUERIES */
+
+/* TABLET VIEW */
+@media screen and (max-width: 1024px) {
+    /* The burger menu will appear */
+    .burger-label {
+        display: flex;
+        position: absolute;
+        top: 1em;
+        right: 5vw;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    /* When the burger menu is clicked/tapped, the nav list menu items will display at the center of screen */
+    nav input:checked ~ ul {
+        display: flex;
+        position: fixed;
+        background-color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        flex-direction: column; /* Nav items are stacked on top of each other */
+        text-align: center;
+        padding: 1em;
+        left: 25%;
+    }
+
+    ul li {
+        padding: 0.5em 0;
+    }
+}
+
+/* MOBILE VIEW */
+@media screen and (max-width: 768px) {
+    .header-content-container {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 50px;
+    }
+
+    .header-content-left {
+        order: 2;
+    }
+
+    .header-content-right {
+        width: 500px;
+    }
+
+    #mindband-heading {
+        text-align: center;
+    }
+
+    #mindband-description {
+        display: none;
+    }
+
+    #learn-more-button {
+        display: none;
+    }
+}
+
+
+#darkmode-switch {
+    height: 30px;
+}
+
+/* Container for left and right side content within header. Content is displayed beside each other */
+.header-content-container {
+    display: flex;
+    padding: 0 5vw;
+    height: 100vh;
+    justify-content: center;
+    column-gap: 80px;
+}
+
+/* Left side: Images of the brain sketch and smartwatch */
+.header-content-left {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#brain-scribble {
+    width: 20vw;
+    position: absolute;
+    left: 40%;
+    bottom: 60%;
+}
+
+#white-watch {
+    animation: float 2.5s ease-in-out infinite;
+    object-fit: contain;
+    width: 25vw;
+}
+
+/* Right side: Introduction text and call-to-action button */
+.header-right-container {
+    display: flex;
+    align-items: center;
+    flex: 0.8;
+    max-width: 1300px;
+}
+
+#header-right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#mindband-heading {
+    text-transform: uppercase;
+}
+
+#mindband-span {
+    font-family: 'more-sugar', sans-serif;
+    text-transform: uppercase;
+    /* Creates a linear gradient background applied to the text */
+    background: linear-gradient(
+            to right,
+            #a175ff 20%,
+            #86d4ff 30%,
+            #20beff 70%,
+            #8048ff 80%
+    );
+    /* Clips the background to the text so the gradient only appears inside the text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes the text transparent so the gradient shows through */
+    background-size: 500% auto; /* Large background size to allow movement for the gradient effect */
+    animation: gradient 2s ease-in-out infinite alternate; /* Infinite animation to create gradient effect */
+}
+
+#mindband-description {
+    color: #736d7e;
+}
+
+#button-container {
+    padding-top: 25px;
+}
+
+#learn-more-button {
+    color: #736d7e;
+    background: white;
+    border: 0.18em solid #736d7e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: relative;
+    padding: 0.8vw 2vw;
+}
+
+#learn-more-button:hover {
+    border: 0.18em solid transparent;
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(45deg, #a175ff, #86d4ff, #20beff, #8048ff) border-box;
+}
+
+#star-scribble-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5em;
+}
+
+#star-scribble {
+    width: 7vw;
+}
+
+/* MAIN SECTIONS */
+/* Main 5 sections of the page, each taking 100% of the view port height */
+#how-it-works, #features, #about-us, #contact {
+    height: 100vh;
+    padding: 5vw;
+}
+
+.section-heading {
+    font-family: 'more-sugar', sans-serif;
+    text-transform: uppercase;
+}
+
+/* HOW IT WORKS SECTION */
+#how-it-works-container {
+    display: flex;
+}
+
+#how-it-works-left {
+    flex: 0.55;
+}
+
+#how-it-works-right {
+    flex: 0.45;
+}
+
+/* SHOELACE DETAILS COMPONENT */
+sl-details.custom-icons::part(summary-icon) {
+    /* Disable the expand/collapse animation */
+    rotate: none;
+}
+
+sl-details::part(base) {
+    border-radius: 10px;
+}
+
+#how-it-works-right sl-details:not(:last-of-type) {
+    margin-bottom: 2vw;
+}
+
+sl-details:focus {
+    outline: none;
+}
+
+/* KEY FRAME ANIMATIONS */
+@keyframes gradient {
+    0% {
+        background-position: 0 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
