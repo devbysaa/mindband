@@ -11,7 +11,6 @@
     <!-- Improves compatibility with older versions of Internet Explorer -->
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
 
-    <!-- Website title displayed in the browser tab -->
     <title>MindBand</title>
 
     <!-- FONT AWESOME ICONS -->
@@ -113,8 +112,9 @@
 
                 <!-- Call-to-action button -->
                 <div id="button-container">
-                    <button class="responsive-button inter" id="learn-more-button">Learn more
-                    </button>
+                    <a href="#how-it-works" class="responsive-button inter" id="learn-more-button">Learn
+                        more
+                    </a>
                 </div>
                 <div id="star-scribble-container">
                     <!-- Figure 27, SadaX Design Agency. n.d., Digital Image. Reproduced from: Figma -->
@@ -324,8 +324,8 @@
                 <h3 class="rubik reveal-type">Click on a watch face!</h3>
                 <!-- Arrow pointing to watch face indicating to user they can click on it -->
                 <!-- Figure 28. SadaX Design Agency. n.d., Digital Image. Reproduced from: Figma -->
-                <img id="arrow-scribble" src="images/arrow-scribble.svg"
-                     alt="Arrow pointing to watch face">
+                <img alt="Arrow pointing to watch face" id="arrow-scribble"
+                     src="images/arrow-scribble.svg">
             </div>
         </div>
 
@@ -340,7 +340,7 @@
         <div id="about-us-container">
 
             <!-- Subheading introducing the company -->
-            <h3 id="about-us-heading" class="rubik">We are Cerevo, a neurotech company</h3>
+            <h3 class="rubik" id="about-us-heading">We are Cerevo, a neurotech company</h3>
 
             <!-- Paragraph container containing the company's background and mission -->
             <div id="about-us-paragraph">
@@ -373,7 +373,7 @@
                     <!-- First metric: Revenue growth -->
                     <div class="metric-content">
                         <!-- Graphical representation of revenue -->
-                        <img src="images/line-graph.png" alt="Line graph icon" class="metric-image">
+                        <img alt="Line graph icon" class="metric-image" src="images/line-graph.png">
                         <!-- Description of revenue growth -->
                         <p class="metric-description responsive-text-small reveal-type">
                             $10 million in revenue achieved by 2047, showcasing rapid growth
@@ -383,7 +383,7 @@
                     <!-- Second metric: Market share -->
                     <div class="metric-content">
                         <!-- Graphical representation of market share -->
-                        <img src="images/pie-chart.png" alt="Pie graph icon" class="metric-image">
+                        <img alt="Pie graph icon" class="metric-image" src="images/pie-chart.png">
                         <!-- Description of market share growth -->
                         <p class="metric-description responsive-text-small reveal-type">
                             Captured 3% of the neurotech market in a short time frame
@@ -393,7 +393,7 @@
                     <!-- Third metric: Product sales -->
                     <div class="metric-content responsive-text-small reveal-type">
                         <!-- Graphical representation of sales -->
-                        <img src="images/bar-chart.png" alt="Bar graph icon" class="metric-image">
+                        <img alt="Bar graph icon" class="metric-image" src="images/bar-chart.png">
                         <!-- Description of sales growth -->
                         <p class="metric-description">
                             Over 15,000 units sold in just 2 years, reflecting strong market demand
@@ -415,7 +415,7 @@
     <!-- Contact Section -->
     <section id="contact">
         <!-- Section Heading -->
-        <h2 id="get-in-touch-heading" class="section-heading responsive-text-large reveal-type">
+        <h2 class="section-heading responsive-text-large reveal-type" id="get-in-touch-heading">
             Get in touch
         </h2>
 
@@ -426,19 +426,19 @@
             <div id="form-container">
                 <form id="contactForm">
                     <!-- Name Input Field -->
-                    <input type="text" id="name" name="name"
-                           placeholder="Enter your name" required>
+                    <input id="name" name="name" placeholder="Enter your name"
+                           required type="text">
 
                     <!-- Email Input Field -->
-                    <input type="email" id="email" name="email"
-                           placeholder="Enter your email" required>
+                    <input id="email" name="email" placeholder="Enter your email"
+                           required type="email">
 
                     <!-- Message Textarea -->
                     <textarea id="message" name="message"
                               placeholder="Write your message" required></textarea>
 
                     <!-- Send Button -->
-                    <button id="send-button" class="responsive-button" type="submit">
+                    <button class="responsive-button" id="send-button" type="submit">
                         Send
                     </button>
                 </form>

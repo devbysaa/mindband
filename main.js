@@ -334,7 +334,7 @@ window.addEventListener('resize', () => {
 
 /* This ia an array of objects, with each object representing a feature of the MindBand
    SmartWatch. Each object stores the id of the <img> element of a watch face, a Font Awesome
-   icon, the colour of the icon and a description. */
+   icon, the colour of the icon and a description */
 const watchFeatures = [
     {
         id: "health-monitoring-and-fitness",
@@ -451,7 +451,6 @@ function formatHeadingFromId(id) {
    container.
    This is then appended to the container displaying the feature
    description */
-
 function addFeatureHeadingWithIcon(text, iconClass, iconColour) {
     const headingContainer = document.createElement('div');
     headingContainer.classList.add('feature-heading');
