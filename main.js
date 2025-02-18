@@ -26,11 +26,6 @@ https://www.youtube.com/watch?v=VeTwNnZUPlw
 // Register the GSAP ScrollTrigger plugin to enable animations based on scrolling
 gsap.registerPlugin(ScrollTrigger);
 
-// Ensure ScrollTrigger updates element positions correctly after the page loads
-window.addEventListener("load", () => {
-    ScrollTrigger.refresh();
-});
-
 /* Select all elements with the class `.reveal-type`.
    These elements contain text that will animate when they appear in the viewport */
 const splitTypes = document.querySelectorAll('.reveal-type');
