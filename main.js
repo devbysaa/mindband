@@ -49,12 +49,12 @@ splitTypes.forEach((char) => {
         scrollTrigger: {
             trigger: char,      // The animation starts when this element enters the viewport
             start: 'top 95%',   // Begins when the top of the element is 95% visible
-            end: 'bottom 10%',  // Ends when the bottom of the element is 10% visible
+            end: 'bottom 30%',  // Ends when the bottom of the element is 50% visible
             scrub: 0.3,         // Smoothly follows scroll movement instead of playing instantly
             markers: false      // Set to `true` to see visual markers for debugging
         },
         opacity: 0.4, // Characters start slightly transparent and fade in
-        stagger: 0.1  // Each character appears with a small delay to create a typing effect
+        stagger: 0.05  // Each character appears with a small delay to create a typing effect
     });
 });
 
