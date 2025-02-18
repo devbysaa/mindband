@@ -6,20 +6,20 @@
     <meta charset="UTF-8">
 
     <!-- Ensures responsive design on mobile devices -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <!-- Improves compatibility with older versions of Internet Explorer -->
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
 
     <!-- Website title displayed in the browser tab -->
     <title>MindBand</title>
 
-    <!-- Link to external stylesheet for styling -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/themes/light.css"/>
-    <script type="module"
-            src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/shoelace-autoloader.js"></script>
+    <!-- FONT AWESOME ICONS -->
+    <link href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/themes/light.css"
+          rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- Link to external stylesheet for styling -->
+    <link href="styles.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,43 +29,45 @@
     <!-- Navigation bar -->
     <nav>
         <div id="logo-container">
-            <!-- Cerevo company logo -->
-            <a href="#home"><img id="logo-svg" src="images/logo.svg" alt="Cerevo logo"></a>
+            <!-- Figure 1. afif fudin, Connection. n.d., Digital Image. Reproduced from: Flat Icon.  -->
+            <a href="#home"><img alt="Cerevo logo" id="logo-svg" src="images/logo.svg"></a>
         </div>
 
-        <!-- This label nests 3 <span> tags to create a burger menu -->
-        <label class="burger-label" for="burger-toggle" aria-controls="navigation">
+        <!-- This label acts as the clickable burger menu. The 'for' attribute links it to the
+        hidden checkbox (#burger-toggle), allowing the checkbox to toggle when the label is clicked -->
+        <label class="burger-label" for="burger-toggle">
+            <!-- Top bar of the burger menu -->
             <svg class="burger-svg" viewBox="0 0 100 100" width="35">
-                <rect class="bar top"
-                      width="70"
-                      height="10"
-                      x="15"
-                      y="25"
-                      rx="5"
-                ></rect>
-                <rect class="bar top"
-                      width="70"
-                      height="10"
-                      x="15"
-                      y="45"
-                      rx="5"
-                ></rect>
-                <rect class="bar top"
-                      width="70"
-                      height="10"
-                      x="15"
-                      y="65"
-                      rx="5"
-                ></rect>
+                <line class="bar top"
+                      stroke-dasharray="75"
+                      stroke-dashoffset="0"
+                      stroke-linecap="round"
+                      stroke-width="15"
+                      x1="85"
+                      x2="15"
+                      y1="35"
+                      y2="35"
+                ></line>
+                <!-- Bottom bar of the burger menu -->
+                <line class="bar bottom"
+                      stroke-dasharray="75"
+                      stroke-dashoffset="0"
+                      stroke-linecap="round"
+                      stroke-width="15"
+                      x1="85"
+                      x2="15"
+                      y1="70"
+                      y2="70"
+                ></line>
             </svg>
         </label>
 
-        <!-- The preceding label is linked to this input tag. When the user
-        selects the burger menu, this checkbox is checked -->
+        <!--  Hidden checkbox that controls the burger menu state. When checked, JavaScript triggers
+        animations to transform the burger icon into an 'X' and reveals the navigation menu -->
         <input id="burger-toggle" type="checkbox">
 
         <!-- Navigation links -->
-        <ul class="responsive-design">
+        <ul class="responsive-design inter" id="nav-list">
             <li><a href="#home">Home</a></li>
             <li><a href="#how-it-works">How it works</a></li>
             <li><a href="#features">Features</a></li>
@@ -75,38 +77,48 @@
     </nav>
 
     <!-- Dark mode toggle switch -->
-    <div id="darkmode-switch"></div>
+    <div id="darkmode-switch">
+        <sl-switch class="responsive-text-small darkmode-switch">Dark mode
+        </sl-switch>
+    </div>
 
     <!-- Hero section with main content -->
     <div class="header-content-container">
-
         <!-- Left side: Images of the brain sketch and smartwatch -->
-        <div class="header-content-left">
-            <img id="brain-scribble" src="images/brain-scribble.svg" alt="A scribble of a brain">
-            <img id="white-watch" src="images/white-watch.svg" alt="MindBand Smartwatch with an aqua coloured band">
+        <div class="header-left-container">
+            <!-- Figure 2. masadepancerah, Brain Overthinking Element. n.d., Digital Image. Reproduced from: Canva. -->
+            <img alt="A scribble of a brain" id="brain-scribble" src="images/brain-scribble.svg">
+            <!-- Figure 3. Freepik, Smartphone device mockup. n.d., Digital Image. Reproduced from: Freepik. -->
+            <!-- Figure 4. Uniconlabs, Artificial Intelligence free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+            <img alt="MindBand Smartwatch with an aqua coloured band" id="white-watch"
+                 src="images/white-watch.svg">
         </div>
 
         <!-- Right side: Introduction text and call-to-action button -->
         <div class="header-right-container">
-            <div id="header-right" class="responsive-design">
+            <div class="header-content-right responsive-design">
 
                 <!-- Main heading -->
-                <h1 class="responsive-text-large" id="mindband-heading">
-                    Introducing the <span id="mindband-span">MindBand</span> SmartWatch
+                <h1 class="responsive-text-large rubik" id="mindband-heading">
+                    Introducing the <span class="more-sugar" id="mindband-span">MindBand</span>
+                    SmartWatch
                 </h1>
 
                 <!-- Short description -->
-                <p class="responsive-text-small" id="mindband-description">
-                    The first ever smartwatch that can read your thoughts. Why tap or swipe when you can think and make
-                    it happen?
+                <p class="responsive-text-small inter reveal-type" id="mindband-description">
+                    MindBand lets you control smart devices with your thoughts using BCI technology.
+                    Map your brain signals to actions like turning off a light. Hands-free and
+                    seamless!
                 </p>
 
                 <!-- Call-to-action button -->
                 <div id="button-container">
-                    <button class="responsive-button button1" id="learn-more-button">Learn more</button>
+                    <button class="responsive-button inter" id="learn-more-button">Learn more
+                    </button>
                 </div>
                 <div id="star-scribble-container">
-                    <img id="star-scribble" src="images/star-scribble.png" alt="Scribble of a star">
+                    <!-- Figure 27, SadaX Design Agency. n.d., Digital Image. Reproduced from: Figma -->
+                    <img alt="Scribble of a star" id="star-scribble" src="images/star-scribble.svg">
                 </div>
             </div>
         </div>
@@ -115,52 +127,473 @@
 
 <!-- Main content sections -->
 <main>
+    <!-- "How It Works" section containing an image and interactive details -->
     <section id="how-it-works">
-        <h2 class="section-heading responsive-text-large">How it works</h2>
+
+        <!-- Section heading for "How It Works" -->
+        <h2 class="section-heading responsive-text-large reveal-type">How it works</h2>
+
+        <!-- Main container that holds both the image (left) and interactive content (right) -->
         <div id="how-it-works-container">
-            <div id="how-it-works-left"></div>
 
-            <div id="how-it-works-right" class="custom-icons">
-                <sl-details summary="Toggle Me" class="custom-icons">
-                    <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
-                    <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+            <!-- Left side: Displays an image of the MindBand smartwatch -->
+            <div id="how-it-works-left">
+                <!-- Image of two green MindBand smartwatches -->
+                <img alt="Two green MindBand smartwatches" id="green-watches"
+                     src="images/green-watches.svg">
+            </div>
 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                </sl-details>
+            <!-- Right side: Contains interactive accordion elements explaining how MindBand works -->
+            <div class="custom-icons" id="how-it-works-right">
 
-                <sl-details summary="Toggle Me" class="custom-icons">
-                    <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
-                    <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+                <!-- BCI Technology Dialog -->
+                <sl-dialog class="dialog-overview responsive-text-small" label="Dialog" no-header>
+                    <!-- Heading: Title for the dialog -->
+                    <h3>BCI Technology</h3>
 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                </sl-details>
+                    <!-- Description of how BCI technology works with MindBand -->
+                    <p>Brain-Computer Interface (BCI) technology enables direct communication
+                        between the brain and external devices.
+                    </p>
+                    <p>MindBand uses advanced neural sensors to analyse signals from the wrist,
+                        detecting subtle nerve activity and blood flow patterns linked to cognitive
+                        processes. This brainwave activity is recorded as a brainwave pattern.
+                    </p>
+                    <p>This pattern is then compared against previously recorded patterns in the
+                        watch’s database. If a match is found, the corresponding command is
+                        triggered (e.g. "Open notifications").
+                    </p>
 
-                <sl-details summary="Toggle Me" class="custom-icons">
-                    <sl-icon name="plus-square" slot="expand-icon"></sl-icon>
-                    <sl-icon name="dash-square" slot="collapse-icon"></sl-icon>
+                    <!-- Close button for the dialog -->
+                    <sl-button class="close-dialog" slot="footer" variant="primary">Close
+                    </sl-button>
+                </sl-dialog>
 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                    commodo consequat.
-                </sl-details>
+                <!-- Tooltip with button to open the BCI Technology dialog -->
+                <sl-tooltip content="Click me!">
+                    <sl-button class="open-dialog">BCI Technology</sl-button>
+                </sl-tooltip>
+
+                <!-- Custom Map Commands Dialog -->
+                <sl-dialog class="dialog-overview responsive-text-small" label="Dialog" no-header>
+                    <!-- Heading -->
+                    <h3>Custom map commands</h3>
+
+                    <!-- Description of how users map their thoughts to commands -->
+                    <p>Before using MindBand, ensure your smartwatch is paired with your smart home
+                        devices, such as lights, thermostats, and speakers.
+                    </p>
+
+                    <p>During setup, you can choose from a list of custom commands. These commands
+                        can either control the watch itself, like reading out your last message, or
+                        manage smart home devices, such as adjusting the thermostat temperature.
+                    </p>
+                    <p>The user is guided to think about the custom command, like turning off a
+                        light in the living room. MindBand records the brain’s pattern and maps it
+                        with the associated thought. These patterns are then recorded, waiting to be
+                        matched in real-time whenever the user thinks about the same action again.
+                        Once a match is found, the corresponding command is executed instantly.
+                    </p>
+
+                    <!-- Close button for the dialog -->
+                    <sl-button class="close-dialog" slot="footer" variant="primary">Close
+                    </sl-button>
+                </sl-dialog>
+
+                <!-- Tooltip with button to open the Custom Map Commands dialog -->
+                <sl-tooltip content="Click me!">
+                    <sl-button class="open-dialog">Custom map commands</sl-button>
+                </sl-tooltip>
+
+                <!-- Think of Something! Dialog -->
+                <sl-dialog class="dialog-overview responsive-text-small" label="Dialog" no-header>
+                    <!-- Heading -->
+                    <h3>Think of something!</h3>
+
+                    <!-- Description of how users trigger actions with their thoughts -->
+                    <p>Once mapped, simply thinking about the trained action will trigger it in
+                        real-time. The system continuously refines and adapts to improve accuracy.
+                        Over time, additional actions can be mapped, enabling a more personalised
+                        experience.
+                    </p>
+
+                    <!-- Close button for the dialog -->
+                    <sl-button class="close-dialog" slot="footer" variant="primary">Close
+                    </sl-button>
+                </sl-dialog>
+
+                <!-- Tooltip with button to open the Think of Something! dialog -->
+                <sl-tooltip content="Click me!">
+                    <sl-button class="open-dialog">Think of something!</sl-button>
+                </sl-tooltip>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features section displaying key functionalities of the MindBand smartwatch -->
+    <section id="features">
+        <!-- Section heading for the Features section -->
+        <h2 class="section-heading responsive-text-large reveal-type">Features</h2>
+
+        <!-- Main container for the interactive feature slider -->
+        <div id="features-container">
+
+            <!-- Watch slider container: Holds all watch faces and navigation arrows -->
+            <div class="watch-slider-container">
+
+                <!-- Left arrow icon for navigating to the previous watch face -->
+                <div class="icon-container" id="left-arrow">
+                    <i class="fa-solid fa-angle-left"></i> <!-- FontAwesome left arrow icon -->
+                </div>
+
+                <!-- Wrapper that contains all watch faces for the feature slider -->
+                <div class="watch-wrapper" id="watch-wrapper">
+
+                    <!-- Each "watch-face" div represents an individual watch face displaying a feature -->
+
+                    <!-- Health Monitoring Feature -->
+                    <div class="watch-face">
+                        <!-- Figure 10. Buadesign, Footsteps free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 11. Syahrul Hidayatullah, Barbell free icon, n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 12. Aldo Cervantes, Trending Topic free icon, n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <img alt="Health monitoring watch face" class="watch-face-image"
+                             id="health-monitoring-and-fitness"
+                             src="images/health-monitoring-and-fitness.svg">
+                    </div>
+
+                    <!-- Smart Home Control Feature -->
+                    <div class="watch-face">
+                        <!-- Figure 13. Uniconlabs, Artificial Intelligence free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 14. Ahmad Roaayala, Temperature free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <img alt="Smart home control watch face" class="watch-face-image"
+                             id="smart-home-control" src="images/smart-home-control.svg">
+                    </div>
+
+                    <!-- Watch Control Feature -->
+                    <div class="watch-face">
+                        <!-- Figure 15. Pixel Perfect, Close free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 16. Uniconlabs, Artificial Intelligence free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <img alt="Watch control watch face" class="watch-face-image"
+                             id="watch-control" src="images/watch-control.svg">
+                    </div>
+
+                    <!-- Sleep Tracking Feature -->
+                    <div class="watch-face">
+                        <!-- Figure 17. Good Ware, Moon free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 18. meaicon, Clock free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <img alt="Sleep tracking watch face" class="watch-face-image"
+                             id="sleep-tracking" src="images/sleep-tracking.svg">
+                    </div>
+
+                    <!-- Long Battery Life Feature -->
+                    <div class="watch-face">
+                        <img alt="Battery life watch face" class="watch-face-image"
+                             id="battery-life" src="images/battery-life.svg">
+                    </div>
+
+                    <!-- Mood Detection Feature -->
+                    <div class="watch-face">
+                        <!-- Figure 19. Freepik, Lotus Flower free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <img alt="Mood detection watch face" class="watch-face-image"
+                             id="mood-detection" src="images/mood-detection.svg">
+                    </div>
+
+                    <!-- Cellular Connectivity Feature -->
+                    <div class="watch-face">
+                        <!-- Figure 20. Lizel Arina, Cellular free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 21. Gregor Cresnar, Power free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 22. logisstudio, Setting free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 23. Freepik, WI FI free icon. n.d., Digital Image. Reprocued from: Flat Icon -->
+                        <!-- Figure 24. Icon Hubs, Mute free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <!-- Figure 25. Vectorslab, Aeroplan free icon. n.d., Digital Image. Reproduced from: Flat Icon -->
+                        <img alt="Cellular network watch face" class="watch-face-image"
+                             id="cellular-network" src="images/cellular-network.svg">
+                    </div>
+
+                </div>
+
+                <!-- Right arrow icon for navigating to the next watch face -->
+                <div class="icon-container" id="right-arrow">
+                    <i class="fa-solid fa-angle-right"></i> <!-- FontAwesome right arrow icon -->
+                </div>
+
+            </div>
+
+            <!-- Feature description container that updates dynamically based on the selected watch face -->
+            <div id="features-description">
+                <h3 class="rubik reveal-type">Click on a watch face!</h3>
+                <!-- Arrow pointing to watch face indicating to user they can click on it -->
+                <!-- Figure 28. SadaX Design Agency. n.d., Digital Image. Reproduced from: Figma -->
+                <img id="arrow-scribble" src="images/arrow-scribble.svg"
+                     alt="Arrow pointing to watch face">
             </div>
         </div>
 
     </section>
 
-    <section id="features"></section>
-    <section id="about-us"></section>
-    <section id="contact"></section>
+    <section id="about-us">
+
+        <!-- Section Title -->
+        <h2 class="section-heading responsive-text-large reveal-type">About Us</h2>
+
+        <!-- Main container for the About Us content -->
+        <div id="about-us-container">
+
+            <!-- Subheading introducing the company -->
+            <h3 id="about-us-heading" class="rubik">We are Cerevo, a neurotech company</h3>
+
+            <!-- Paragraph container containing the company's background and mission -->
+            <div id="about-us-paragraph">
+
+                <!-- First paragraph: Introduction and mission of the company -->
+                <p class="responsive-text-small reveal-type">
+                    At Cerevo, we're passionate about transforming the way people interact with
+                    technology. Founded in the year 2045 by a team of engineers, neuro-scientists,
+                    and designers, we set out with a clear mission: to make brain-to-device
+                    communication not just a possibility, but a practical, life-changing reality.
+                    Innovation and accessibility are at the heart of everything we do, and we're
+                    dedicated to creating solutions that truly make a difference.
+                </p>
+
+                <!-- Second paragraph: Company growth and future goals -->
+                <p class="responsive-text-small reveal-type">
+                    In just a few years, Cerevo has grown from a bold idea to a leader in the
+                    neurotech industry, building a reputation for innovation, integrity, and
+                    excellence. As we continue to expand, we remain focused on our mission: to
+                    develop accessible, user-centric solutions that transform lives and shape the
+                    future of human technology interaction.
+                </p>
+            </div>
+
+            <div id="metric-container">
+
+                <!-- Metric box to contain individual metric items -->
+                <div class="metric-box">
+
+                    <!-- First metric: Revenue growth -->
+                    <div class="metric-content">
+                        <!-- Graphical representation of revenue -->
+                        <img src="images/line-graph.png" alt="Line graph icon" class="metric-image">
+                        <!-- Description of revenue growth -->
+                        <p class="metric-description responsive-text-small reveal-type">
+                            $10 million in revenue achieved by 2047, showcasing rapid growth
+                        </p>
+                    </div>
+
+                    <!-- Second metric: Market share -->
+                    <div class="metric-content">
+                        <!-- Graphical representation of market share -->
+                        <img src="images/pie-chart.png" alt="Pie graph icon" class="metric-image">
+                        <!-- Description of market share growth -->
+                        <p class="metric-description responsive-text-small reveal-type">
+                            Captured 3% of the neurotech market in a short time frame
+                        </p>
+                    </div>
+
+                    <!-- Third metric: Product sales -->
+                    <div class="metric-content responsive-text-small reveal-type">
+                        <!-- Graphical representation of sales -->
+                        <img src="images/bar-chart.png" alt="Bar graph icon" class="metric-image">
+                        <!-- Description of sales growth -->
+                        <p class="metric-description">
+                            Over 15,000 units sold in just 2 years, reflecting strong market demand
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Empty metric boxes (likely placeholders for future content or layout balancing) -->
+                <div class="metric-box"></div>
+                <div class="metric-box"></div>
+
+            </div> <!-- End of metric-container -->
+
+        </div> <!-- End of about-us-container -->
+    </section>
 </main>
 
+<footer>
+    <!-- Contact Section -->
+    <section id="contact">
+        <!-- Section Heading -->
+        <h2 id="get-in-touch-heading" class="section-heading responsive-text-large reveal-type">
+            Get in touch
+        </h2>
+
+        <!-- Container for the contact form and footer links -->
+        <div id="contact-container">
+
+            <!-- Contact Form Container -->
+            <div id="form-container">
+                <form id="contactForm">
+                    <!-- Name Input Field -->
+                    <input type="text" id="name" name="name"
+                           placeholder="Enter your name" required>
+
+                    <!-- Email Input Field -->
+                    <input type="email" id="email" name="email"
+                           placeholder="Enter your email" required>
+
+                    <!-- Message Textarea -->
+                    <textarea id="message" name="message"
+                              placeholder="Write your message" required></textarea>
+
+                    <!-- Send Button -->
+                    <button id="send-button" class="responsive-button" type="submit">
+                        Send
+                    </button>
+                </form>
+            </div>
+
+            <!-- Footer Links Container -->
+            <div id="footer-links">
+
+                <!-- Policies Section -->
+                <div id="policies-container">
+                    <h5 class="rubik">Policies</h5>
+                    <a class="inter">Privacy Policy</a>
+                    <a class="inter">Copyright Policy</a>
+                    <a class="inter">Cookies</a>
+                </div>
+
+                <!-- Support and FAQ Section -->
+                <div id="need-help-container">
+                    <h5 class="rubik">Need Help?</h5>
+                    <a class="inter">Support</a>
+                    <a class="inter">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>
+
 <!-- Link to external JavaScript files -->
+
+<!-- SHOELACE LIBRARY: Loads Shoelace web components -->
+<script src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.20.0/cdn/shoelace-autoloader.js"
+        type="module"></script>
+
+<!-- FONTAWESOME: Enables scalable vector icons -->
+<script crossorigin="anonymous" src="https://kit.fontawesome.com/7abee5e80c.js"></script>
+
+<!-- GSAP: Animation library -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
+<!-- GSAP ScrollTrigger: Triggers animations based on scroll position -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+
+<!-- SplitType.js: Splits text into characters or words for animations -->
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+
+<!-- LENIS: Adds smooth scrolling effects -->
+<script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+
+<!-- Main JavaScript File: Contains custom scripts for animations and interactions -->
 <script src="main.js"></script>
 </body>
 </html>
+
+<!--
+IMAGE REFERENCES
+Canva. n.d. "Brain Overthinking Element." Canva.
+https://www.canva.com/icons/MAFsbLL_S9o-brain-overthinking-element/
+Figure 2. masadepancerah, Brain Overthinking Element. n.d., Digital Image. Reproduced from: Canva.
+
+Figma. n.d. "Design graphic elements." Figma.
+https://www.figma.com/community/file/1249689271208704567
+Figure 27. SadaX Design Agency. n.d., Digital Image. Reproduced from: Figma
+Figure 28. SadaX Design Agency. n.d., Digital Image. Reproduced from: Figma
+
+Flat Icon. n.d. "Aeroplan free icon." Flat Icon.
+https://www.flaticon.com/free-icon/aeroplan_16899578?term=aeroplane&page=2&position=15&origin=search&related_id=16899578
+Figure 25. Vectorslab, Aeroplan free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Artificial Intelligence free icon." Flat Icon.
+https://www.flaticon.com/free-icon/artificial-intelligence_7364279?term=brain&page=1&position=63&origin=search&related_id=7364279
+Figure 4. Uniconlabs, Artificial Intelligence free icon. n.d., Digital Image. Reproduced from: Flat Icon
+Figure 13. Uniconlabs, Artificial Intelligence free icon. n.d., Digital Image. Reproduced from: Flat Icon
+Figure 16. Uniconlabs, Artificial Intelligence free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Barbell free icon." Flat Icon.
+https://www.flaticon.com/free-icon/barbell_8901019?term=dumbell&page=1&position=12&origin=search&related_id=8901019
+Figure 11. Syahrul Hidayatullah, Barbell free icon, n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Bar Chart free icon." Flat Icon.
+https://www.flaticon.com/free-icon/bar-chart_2152656?term=bar+chart&page=1&position=5&origin=search&related_id=2152656
+Figure 9. Muhazdinata Premium, Bar Chart free icon, n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Cellular free icon." Flat Icon.
+https://www.flaticon.com/free-icon/cellular_7571064?term=cellular+bars&page=1&position=4&origin=search&related_id=7571064
+Figure 20. Lizel Arina, Cellular free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Clock free icon." Flat Icon.
+https://www.flaticon.com/free-icon/clock_17236060?term=clock+hand&page=1&position=88&origin=search&related_id=17236060
+Figure 18. meaicon, Clock free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Close free icon." Flat Icon.
+https://www.flaticon.com/free-icon/close_1828665?term=x&page=1&position=3&origin=search&related_id=1828665
+Figure 15. Pixel Perfect, Close free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Connection." Flat Icon.
+https://www.flaticon.com/free-icon/connection_12220509?term=brain&page=2&position=27&origin=search&related_id=12220509
+Figure 1. afif fudin, Connection. n.d, Digital Image. Reproduced from: Flat Icon.
+
+Flat Icon. n.d. "Curve free icon." Flat Icon.
+https://www.flaticon.com/free-icon/curve_4211531?k=1739639880870&log-in=email
+Figure 7. nawpixel, Curve free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Footsteps free icon." Flat Icon.
+https://www.flaticon.com/free-icon/footsteps_9671118?term=footsteps&page=1&position=2&origin=search&related_id=9671118
+Figure 10. Buadesign, Footsteps free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Home free icon." Flat Icon.
+https://www.flaticon.com/free-icon/home_16836638?term=scribble+house&page=1&position=3&origin=search&related_id=16836638
+Figure 6. Cuputo, Home free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Lotus Flower free icon." Flat Icon.
+https://www.flaticon.com/free-icon/lotus-flower_1308616?term=calm&page=1&position=12&origin=search&related_id=1308616
+Figure 19. Freepik, Lotus Flower free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Mute free icon." Flat Icon.
+https://www.flaticon.com/free-icon/mute_8113899?term=mute&page=1&position=81&origin=search&related_id=8113899
+Figure 24. Icon Hubs, Mute free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Moon free icon." Flat Icon.
+https://www.flaticon.com/free-icon/moon_702471?term=moon&page=1&position=3&origin=search&related_id=702471
+Figure 17. Good Ware, Moon free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Pie Chart free icon." Flat Icon.
+https://www.flaticon.com/free-icon/pie-chart_8450970?term=pie+graph&page=1&position=25&origin=search&related_id=8450970
+Figure 8. Prosymbols Premium, Pie chart free icon, n.d. Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Power free icon." Flat Icon.
+https://www.flaticon.com/free-icon/power_159607?term=power&page=1&position=1&origin=search&related_id=159607
+Figure 21. Gregor Cresnar, Power free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Setting free icon." Flat Icon.
+https://www.flaticon.com/free-icon/setting_9637797?term=settings&page=1&position=15&origin=search&related_id=9637797
+Figure 22. logisstudio, Setting free icon. n.d. Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Smartphone free icon." Flat Icon.
+https://www.flaticon.com/free-icon/smartphone_16836712?term=phone+scribble&page=1&position=3&origin=search&related_id=16836712
+Figure 7. Cuputo, Smartphone free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Temperature free icon." Flat Icon.
+https://www.flaticon.com/free-icon/high-temperature_12313616?term=thermostat&page=2&position=24&origin=search&related_id=12313616
+Figure 14. Ahmad Roaayala, Temperature free icon. n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "Trending Topic free icon." Flat Icon.
+https://www.flaticon.com/free-icon/trending-topic_2550418?term=fire&page=1&position=15&origin=search&related_id=2550418
+Figure 12. Aldo Cervantes, Trending Topic free icon, n.d., Digital Image. Reproduced from: Flat Icon
+
+Flat Icon. n.d. "WI FI free icon." Flat Icon.
+https://www.flaticon.com/free-icon/wi-fi_1848?term=wifi&page=1&position=4&origin=search&related_id=1848
+Figure 23. Freepik, WI FI free icon. n.d., Digital Image. Reprocued from: Flat Icon
+
+Freepik. n.d. "Smartphone device mockup." Freepik.
+https://www.freepik.com/premium-psd/smartphone-device-mockup_197493664.htm#fromView=serie&position=1
+Figure 3. Freepik, Smartphone device mockup. n.d., Digital Image. Reproduced from: Freepik.
+
+Freepik. n.d. "Smartphone device mockup." Freepik.
+https://www.freepik.com/premium-psd/smartphone-device-mockup_197493679.htm#fromView=serie&position=5
+Figure 5. Freepik, Smartphone device mockup. n.d., Digital Image. Reproduced from: Freepik.
+-->

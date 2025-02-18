@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{@shoelace-style/shoelace}" />
+    <file url="PROJECT" libraries="{7abee5e80c, @shoelace-style/shoelace, gsap, lenis, split-type}" />
   </component>
 </project>

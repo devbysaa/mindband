@@ -1,52 +1,112 @@
-/* UNIVERSAL STYLING */
+/*
+   ============================================================
+   UNIVERSAL STYLING
+   ============================================================
+*/
+
+/* Set CSS variables for element colours to enable easy dark mode toggling */
 :root {
-    --bg-color: #ffffff;
-    --text-color: #000000;
+    --bg-colour: #ffffff;
+    --text-colour-one: #393346;
+    --text-colour-two: #7e7c83;
+    --element-colour: #393346;
+    --primary-colour: #a175ff;
+    --secondary-colour-one: #86d4ff;
+    --secondary-colour-two: #20beff;
+    --secondary-colour-three: #ff92f8;
+    --secondary-colour-four: #9fff98;
+    --icon-background: #e9e7ee;
+
+    transition: background-color 0.5s ease,
+    color 0.5s ease,
+    filter 0.5s
 }
 
-/* Import More Sugar font */
+/*
+   ============================================================
+   FONT IMPORTS FROM LOCAL FOLDER
+   ============================================================
+*/
+
 @font-face {
-    font-family: 'rubik-regular';
-    src: url('fonts/rubik-regular.ttf') format('truetype');
+    font-family: 'rubik';
+    src: url('fonts/rubik.ttf') format('truetype');
 }
 
-/* Import More Sugar font */
+@font-face {
+    font-family: 'inter';
+    src: url('fonts/inter.ttf') format('truetype');
+}
+
 @font-face {
     font-family: "more-sugar";
     src: url('fonts/more-sugar.ttf') format('truetype');
 }
 
+/* Enables smooth scrolling effect when navigating between sections
+   of the page */
 html {
     scroll-behavior: smooth;
 }
 
 /* Apply global styles to all elements */
 * {
-    box-sizing: border-box; /* Ensure padding and border are included in element width & height */
-    color: #393346;
-    font-family: 'rubik-regular', sans-serif;
-    /* Remove default padding and margin added by browsers */
-    padding: 0;
+    /* Ensure padding and border are included in element width & height */
+    box-sizing: border-box;
+    /* Remove default margin and padding added by browsers */
     margin: 0;
+    padding: 0;
 }
 
-/* HEADER STYLING */
+/* For paragraphs */
+.inter {
+    font-family: 'inter', sans-serif;
+}
 
-/* Displays the nav bar and main content of the header on top of each other */
+/* For headings */
+.rubik {
+    font-family: 'rubik', sans-serif;
+    color: var(--text-colour-one);
+}
+
+/* For playful headings */
+.more-sugar {
+    font-family: 'more-sugar', sans-serif;
+    color: var(--text-colour-one);
+}
+
+/* Ensure the entire body smoothly changes color */
+body {
+    background-color: var(--bg-colour);
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/*
+   ============================================================
+   HEADER STYLING
+   ============================================================
+*/
+
+/* Use flexbox to stack nav bar and header content on top of each other */
 header {
     display: flex;
     flex-direction: column;
 }
 
-/* Responsive text with adaptive font size and line height for large headings & text.
- * The clamp() function dynamically adjusts values while keeping them within a minimum and maximum range */
+/* Responsive text with adaptive font size and line height for large headings
+   & text. The clamp() function dynamically adjusts values while keeping them
+   within a minimum and maximum range */
 .responsive-text-large {
+    font-family: 'rubik', sans-serif;
     font-size: clamp(40px, 3vw, 100px);
     line-height: clamp(60px, 5vw, 150px);
 }
 
 /* Responsive text with adaptive font size and line height for paragraphs */
 .responsive-text-small {
+    font-family: 'inter', sans-serif;
+    font-size: clamp(15px, 1vw, 40px);
+    color: var(--text-colour-two);
     line-height: clamp(25px, 1.5vw, 100px);
 }
 
@@ -60,171 +120,226 @@ header {
 /* Responsive design with adaptive font size and border radius for buttons */
 .responsive-button {
     font-size: clamp(15px, 1vw, 50px);
-    border-radius: clamp(8px, 1vw, 30px);
+    border-radius: clamp(10px, 1vw, 30px);
 }
+
+/*
+   ============================================================
+   NAV BAR STYLING
+   ============================================================
+*/
 
 nav {
     display: flex; /* Nav bar links are displayed beside each other */
-    background-color: #fff;
-    justify-content: space-between; /* Spaces items evenly */
+    background-color: var(--bg-colour);
+    justify-content: space-between; /* Spaces links evenly */
     padding: 0 5vw;
-    z-index: 1; /* Ensures it stays above lower elements */
+    z-index: 2; /* Ensures it stays above lower elements */
     position: fixed; /* Nav bar will stays fixed at the top while scrolling */
     top: 0;
     left: 0;
     right: 0;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Container for company logo */
+/* Container for company logo. Center the logo within nav bar both vertically
+   and horizontally */
 #logo-container {
     display: flex;
     align-self: center;
     justify-content: center;
-    padding: 8px 0;
 }
 
+/* Company logo image */
 #logo-svg {
-    width: 50px;
+    width: 65px;
 }
 
-ul {
+/* Display navigation links horizontally, center them vertically, remove
+   default list styling and spacing the items evenly */
+#nav-list {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Space evenly between nav bar links */
+    justify-content: space-between;
     list-style: none;
-    width: 50vw;
+    width: 50vw; /* Takes up 50% of the viewport width */
 }
 
+/* Style links to remove underlines and add pointer cursor on hover */
 a {
     cursor: pointer;
+    color: var(--text-colour-one);
     text-decoration: none;
 }
 
+/* Change link colour on hover to provide visual feedback and improve
+   interactivity. */
 a:hover {
-    color: #a175ff;
+    color: var(--primary-colour);
 }
 
-/* HAMBURGER MENU STYLING & MEDIA QUERIES */
+/*
+   ============================================================
+   HAMBURGER MENU STYLING
+   ============================================================
+*/
 
-/* Targets a checkbox input tag linked with the burger menu */
+/*  Hide the checkbox input from view. The checkbox is still functional but not visible,
+    and the label controls its state */
 #burger-toggle {
     display: none;
 }
 
-/* Targets a label that nests 3 <span> tags to create a burger menu. The display is
- * hidden until certain media queries apply */
+/* Style the burger menu label (clickable area). It’s styled as a square with a border and
+   contains the SVG lines */
 .burger-label {
+    background-color: transparent; /* Transparent background for the label */
+    border: 0.2em solid var(--element-colour); /* Border colour using CSS variable */
+    border-radius: 0.6em; /* Rounded corners */
+    cursor: pointer;
     display: none;
     flex-direction: column;
-    cursor: pointer;
-    position: relative;
-    border: 0.18em solid #393346;
-    border-radius: 0.6em;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 45px;
 }
 
+/* Style the SVG lines inside the burger menu */
 .burger-svg {
-    fill: #393346;
+    stroke: var(--element-colour);
 }
 
-/* MEDIA QUERIES */
-
-/* TABLET VIEW */
-@media screen and (max-width: 1024px) {
-    /* The burger menu will appear */
-    .burger-label {
-        display: flex;
-        position: absolute;
-        top: 1em;
-        right: 5vw;
-    }
-
-    nav ul {
-        display: none;
-    }
-
-    /* When the burger menu is clicked/tapped, the nav list menu items will display at the center of screen */
-    nav input:checked ~ ul {
-        display: flex;
-        position: fixed;
-        background-color: white;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        border-bottom-left-radius: 15px;
-        border-bottom-right-radius: 15px;
-        flex-direction: column; /* Nav items are stacked on top of each other */
-        text-align: center;
-        padding: 1em;
-        left: 25%;
-    }
-
-    ul li {
-        padding: 0.5em 0;
-    }
+/* Default properties for both lines (bars) of the burger menu.
+   stroke-dasharray and stroke-dashoffset control line visibility and animation */
+.bar {
+    stroke-dasharray: 75; /* The full length of the line */
+    stroke-dashoffset: 0; /* No offset, so the lines are fully visible */
 }
 
-/* MOBILE VIEW */
-@media screen and (max-width: 768px) {
-    .header-content-container {
-        flex-direction: column;
-        align-items: center;
-        row-gap: 50px;
-    }
+/* Set the rotation pivot point for the top bar */
+.bar.top {
+    --rotation: 45deg; /* Define rotation angle for animation */
+    transform-origin: 30px 45px; /* The point around which the top bar rotates */
+}
 
-    .header-content-left {
-        order: 2;
-    }
+/* Set the rotation pivot point for the bottom bar */
+.bar.bottom {
+    --rotation: -45deg; /* Define rotation angle for animation */
+    transform-origin: 30px 60px; /* The point around which the bottom bar rotates */
+}
 
-    .header-content-right {
-        width: 500px;
-    }
+/*
+   ============================================================
+   BURGER MENU KEY FRAME ANIMATIONS
+   ============================================================
+*/
 
-    #mindband-heading {
-        text-align: center;
+/* Animation keyframes to transform the burger menu into an 'X'
+    when the checkbox is checked */
+@keyframes close-burger-menu {
+    0% {
+        stroke-dashoffset: 0; /* Line starts fully visible */
     }
-
-    #mindband-description {
-        display: none;
+    40% {
+        stroke-dashoffset: 74.9; /* Line almost fully disappears (creates a "closing" effect) */
     }
-
-    #learn-more-button {
-        display: none;
+    60% {
+        stroke-dashoffset: 74.9; /* Keep the line hidden */
+        rotate: var(--rotation); /* Rotate the bar to create the 'X' shape */
+    }
+    100% {
+        stroke-dashoffset: 0; /* Line reappears in its new rotated position */
+        rotate: var(--rotation);
     }
 }
 
+/* Animation keyframes to revert the burger menu back to its original state
+   when the checkbox is unchecked */
+@keyframes open-burger-menu {
+    0% {
+        stroke-dashoffset: 0;
+        rotate: var(--rotation); /* Start in rotated position (as 'X') */
+    }
+    40% {
+        stroke-dashoffset: 74.9; /* Hide the line partially */
+        rotate: var(--rotation); /* Keep the rotation */
+    }
+    60% {
+        stroke-dashoffset: 74.9; /* Keep the line hidden */
+    }
+    100% {
+        stroke-dashoffset: 0; /* Fully visible in the original horizontal position */
+    }
+}
 
+/*
+   ============================================================
+   FULL PAGE HEADER CONTENT STYLING
+   ============================================================
+*/
+
+/* Placeholder for the dark mode toggle switch,
+   specifying its size and position */
 #darkmode-switch {
+    display: flex;
     height: 30px;
+    justify-content: flex-end;
+    padding: 0 5vw;
+    position: relative;
+    z-index: 1;
+    top: 85px;
 }
 
-/* Container for left and right side content within header. Content is displayed beside each other */
+/* Adjusting height and width of shoelace switch component */
+sl-switch::part(base) {
+    --height: 1.8em;
+    --width: 3.5em;
+}
+
+/* Use flexbox to arrange header content side-by-side, centering the
+   items and adding spacing between them. The header takes up the full
+   viewport height */
 .header-content-container {
     display: flex;
-    padding: 0 5vw;
+    column-gap: 9em;
     height: 100vh;
     justify-content: center;
-    column-gap: 80px;
+    padding: 20em 5vw;
+    margin-top: 50px;
 }
 
-/* Left side: Images of the brain sketch and smartwatch */
-.header-content-left {
+/* Left side: Images of the brain sketch and smartwatch. Align the
+   left side content vertically and allow absolute positioning for
+   the images within this section */
+.header-left-container {
     display: flex;
     align-items: center;
     position: relative;
 }
 
+/* Position the brain scribble image over the smartwatch image,
+   setting its size responsively */
 #brain-scribble {
-    width: 20vw;
     position: absolute;
     left: 40%;
     bottom: 60%;
+    width: 25vw;
+    min-width: 200px;
 }
 
+/* Add a floating animation to the smartwatch image to create
+   a dynamic visual effect. The image size is responsive */
 #white-watch {
     animation: float 2.5s ease-in-out infinite;
-    object-fit: contain;
+    object-fit: contain; /* Image fits within its container */
+    min-width: 175px;
     width: 25vw;
 }
 
-/* Right side: Introduction text and call-to-action button */
+/* Right side: Introduction text and call-to-action button.
+   Align the right side content vertically and limit its width
+   for readability on large screen sizes */
 .header-right-container {
     display: flex;
     align-items: center;
@@ -232,26 +347,30 @@ a:hover {
     max-width: 1300px;
 }
 
-#header-right {
+/* Organise the right side header content in a vertical stack */
+.header-content-right {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 #mindband-heading {
-    text-transform: uppercase;
+    text-transform: uppercase; /* Transform main heading text to uppercase */
+    width: 100%;
 }
 
+/* Apply a colourful gradient text animation to the word 'MindBand' */
 #mindband-span {
     font-family: 'more-sugar', sans-serif;
     text-transform: uppercase;
     /* Creates a linear gradient background applied to the text */
     background: linear-gradient(
             to right,
-            #a175ff 20%,
-            #86d4ff 30%,
-            #20beff 70%,
-            #8048ff 80%
+            var(--primary-colour) 20%,
+            var(--secondary-colour-one) 40%,
+            var(--secondary-colour-two) 60%,
+            var(--secondary-colour-three) 80%,
+            var(--secondary-colour-four) 100%
     );
     /* Clips the background to the text so the gradient only appears inside the text */
     -webkit-background-clip: text;
@@ -261,84 +380,68 @@ a:hover {
     animation: gradient 2s ease-in-out infinite alternate; /* Infinite animation to create gradient effect */
 }
 
+/* Style the description text with a muted colour to create
+   contrast with the heading */
 #mindband-description {
-    color: #736d7e;
+    color: var(--text-colour-two);
 }
 
+/* Padding above call-to-action button to separate it from
+   text content */
 #button-container {
     padding-top: 25px;
 }
 
-#learn-more-button {
-    color: #736d7e;
-    background: white;
-    border: 0.18em solid #736d7e;
+/* Style the 'Learn More' and 'Send' button with a border, shadow, and padding.
+   The button changes appearance when hovered over */
+#learn-more-button, #send-button {
+    color: var(--text-colour-one);
+    background-color: var(--bg-colour);
+    border: 0.18em solid var(--text-colour-two);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     position: relative;
     padding: 0.8vw 2vw;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-#learn-more-button:hover {
+/* Change the button's border to a gradient effect on hover
+   for visual feedback */
+#learn-more-button:hover, #send-button:hover {
     border: 0.18em solid transparent;
-    background: linear-gradient(white, white) padding-box,
-    linear-gradient(45deg, #a175ff, #86d4ff, #20beff, #8048ff) border-box;
+    background: linear-gradient(var(--bg-colour), var(--bg-colour)) padding-box,
+    linear-gradient(45deg,
+            var(--primary-colour) 20%,
+            var(--secondary-colour-one) 40%,
+            var(--secondary-colour-two) 60%,
+            var(--secondary-colour-three) 80%,
+            var(--secondary-colour-four) 100%
+    ) border-box;
 }
 
+/* Position the star scribble image towards the right side of
+   the header content */
 #star-scribble-container {
     display: flex;
     justify-content: flex-end;
     margin-right: 5em;
 }
 
+/* Set a responsive size for the star scribble image, ensuring
+   it looks good on different screen sizes */
 #star-scribble {
     width: 7vw;
+    min-width: 50px;
 }
 
-/* MAIN SECTIONS */
-/* Main 5 sections of the page, each taking 100% of the view port height */
-#how-it-works, #features, #about-us, #contact {
-    height: 100vh;
-    padding: 5vw;
-}
+/*
+   ============================================================
+   MINDBAND HEADING KEY FRAME ANIMATIONS
+   ============================================================
+*/
 
-.section-heading {
-    font-family: 'more-sugar', sans-serif;
-    text-transform: uppercase;
-}
-
-/* HOW IT WORKS SECTION */
-#how-it-works-container {
-    display: flex;
-}
-
-#how-it-works-left {
-    flex: 0.55;
-}
-
-#how-it-works-right {
-    flex: 0.45;
-}
-
-/* SHOELACE DETAILS COMPONENT */
-sl-details.custom-icons::part(summary-icon) {
-    /* Disable the expand/collapse animation */
-    rotate: none;
-}
-
-sl-details::part(base) {
-    border-radius: 10px;
-}
-
-#how-it-works-right sl-details:not(:last-of-type) {
-    margin-bottom: 2vw;
-}
-
-sl-details:focus {
-    outline: none;
-}
-
-/* KEY FRAME ANIMATIONS */
+/* Define keyframes for the gradient animation effect on text,
+   creating a smooth transition between colours */
 @keyframes gradient {
     0% {
         background-position: 0 50%;
@@ -348,6 +451,7 @@ sl-details:focus {
     }
 }
 
+/* Define keyframes for the floating animation applied to images */
 @keyframes float {
     0% {
         transform: translateY(0);
@@ -357,5 +461,587 @@ sl-details:focus {
     }
     100% {
         transform: translateY(0);
+    }
+}
+
+/*
+   ============================================================
+   MAIN SECTIONS STYLING
+   ============================================================
+*/
+
+/* Make each main section occupy the full viewport height and add
+   padding for content spacing */
+#how-it-works, #features, #about-us, #contact {
+    min-height: 100vh;
+    padding: 0 5vw;
+}
+
+#features, #about-us, #contact {
+    padding-top: 100px;
+}
+
+/* Style section headings with the decorative 'More Sugar' font
+   and transform the text to uppercase for emphasis */
+.section-heading {
+    font-family: 'more-sugar', sans-serif;
+    text-transform: uppercase;
+    color: var(--text-colour-one);
+}
+
+/*
+   ============================================================
+   HOW IT WORKS SECTION
+   ============================================================
+*/
+
+/* Use flexbox to arrange the content of the 'How It Works' section
+   side-by-side */
+#how-it-works-container {
+    display: flex;
+}
+
+#how-it-works-left {
+    flex: 0.55;
+}
+
+/* Targets the two green watches. Always will have a minimum width
+   of 400px */
+#green-watches {
+    object-fit: contain;
+    width: 45vw;
+    min-width: 400px;
+}
+
+/* Allocate the remaining space to the right side for Shoelace
+   Dialog Component */
+#how-it-works-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 0.45;
+}
+
+/*
+   ============================================================
+   HOW IT WORKS SECTION - SHOELACE DIALOG COMPONENT
+   ============================================================
+*/
+
+/* Style the base container of the Shoelace button components that open
+   and close the dialog */
+.open-dialog::part(base), .close-dialog::part(base) {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 0.18em solid var(--text-colour-two);
+    border-radius: clamp(10px, 1vw, 20px);
+    background-color: var(--bg-colour);
+    color: var(--text-colour-one);
+}
+
+/* Adjust padding and width for button to open shoelace dialog */
+.open-dialog::part(base) {
+    padding: 0.5rem 0;
+    width: 80%;
+    min-width: 300px;
+}
+
+.open-dialog::part(base) {
+    margin-bottom: 2rem; /* Add spacing between multiple Shoelace dialog components */
+}
+
+/* Add a gradient border effect with white inner background */
+sl-button::part(base):hover {
+    /* White background inside the padding area */
+    background: linear-gradient(var(--bg-colour), var(--bg-colour)) padding-box,
+        /* Gradient border with colours at a 45-degree angle */ linear-gradient(45deg,
+            var(--primary-colour) 20%,
+            var(--secondary-colour-one) 40%,
+            var(--secondary-colour-two) 60%,
+            var(--secondary-colour-three) 70%,
+            var(--secondary-colour-four) 90%
+    ) border-box;
+
+    /* Make the border transparent to show the gradient */
+    border: 0.18em solid transparent;
+}
+
+/* Style the heading the dialog component by adding
+   padding and changing the text colour */
+sl-dialog h3 {
+    color: var(--text-colour-one);
+    padding: 0.5em 0 1em;
+}
+
+/* Style the paragraph elements within the dialog component by adding
+   spacing below each paragraph and changing the text colour */
+sl-dialog p {
+    color: var(--text-colour-two);
+    margin-bottom: 1rem; /* Adjust the spacing between paragraphs */
+}
+
+/*
+   ============================================================
+   FEATURES SECTION
+   ============================================================
+*/
+
+/* The container that holds the watch slider. This element ensures that the
+   slider doesn't overflow its bounds and remains horizontally constrained */
+.watch-slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden; /* Hide any watch faces that overflow beyond the container width */
+}
+
+/* The wrapper element that contains all individual watch faces. It is
+   horizontally flexible, allowing us to slide the watch faces left or right.
+   The transform property will be dynamically modified via JavaScript to shift
+   the slider left or right */
+.watch-wrapper {
+    display: flex; /* Display watch faces in a horizontal row */
+    transition: transform 0.5s ease; /* Smoothly animate slider movements */
+    width: 100%;
+}
+
+/* Each watch face is a flexible column containing an image and a dialog button.
+   This setup ensures that exactly 4 watch faces are visible at once on larger
+   screens. JavaScript adjusts this behavior for smaller screens */
+.watch-face {
+    display: flex; /* Stack elements vertically */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 0 0 25%; /* Initially 4 watches displayed */
+    text-align: center;
+    min-height: 300px;
+}
+
+/* The images that visually represent each watch face */
+.watch-face-image {
+    width: 85%;
+    border-radius: 50%;
+    height: auto;
+    object-fit: contain;
+    cursor: pointer;
+    overflow: hidden; /* Ensures cursor applies only within the circle */
+    transition: width 0.3s; /* Smooth transition when width changes */
+}
+
+/* Increase the width on hover */
+.watch-face-image:hover {
+    width: 90%;
+}
+
+/* These arrow buttons sit to the left and right of the slider and allow the
+   user to scroll through the watch faces */
+.icon-container {
+    background-color: #e9e7ef;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Position arrows relative to their container */
+    top: 50%; /* Position arrows vertically at 40% of the container height */
+    transform: translateY(-50%); /* Adjust to perfectly center arrows vertically */
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    z-index: 1; /* Ensure arrow buttons stay on top of slider content */
+}
+
+.icon-container:hover {
+    /* White background inside the padding area */
+    background: linear-gradient(var(--bg-colour), var(--bg-colour)) padding-box,
+        /* Gradient border with colours at a 45-degree angle */ linear-gradient(45deg,
+            var(--primary-colour) 20%,
+            var(--secondary-colour-one) 40%,
+            var(--secondary-colour-two) 60%,
+            var(--secondary-colour-three) 70%,
+            var(--secondary-colour-four) 90%
+    ) border-box;
+
+    /* Make the border transparent to show the gradient */
+    border: 0.2em solid transparent;
+}
+
+.icon-container:first-child {
+    left: 5px; /* Position the left arrow 20px from the left edge */
+}
+
+.icon-container:last-child {
+    right: 5px; /* Position the right arrow 20px from the right edge */
+}
+
+/* The icons inside the arrow buttons use Font Awesome classes */
+i {
+    font-size: 20px;
+    color: #333;
+}
+
+#features-description {
+    max-width: 1100px;
+}
+
+/* Font Awesome Icon before the feature heading */
+.feature-heading {
+    display: flex;
+    align-items: center; /* Vertically align icon and text */
+    gap: 10px; /* Space between icon and text */
+    margin-bottom: 15px;
+}
+
+.feature-icon {
+    font-size: 2rem;
+}
+
+#features-description h3 {
+    display: inline-block;
+}
+
+/* Each paragraph of the description */
+#features-description p {
+    margin-bottom: 1rem;
+}
+
+/* Arrow pointing to watch face indicating to user they can click on it */
+#arrow-scribble {
+    display: inline-block;
+    width: 7vw;
+}
+
+/*
+   ============================================================
+   ABOUT US SECTION
+   ============================================================
+*/
+
+/* Adjust the font size of the About Us heading to be responsive.
+   Uses `clamp()` to scale between 1rem and 1.5rem based on viewport width.
+   Adds padding to create spacing above and below the heading */
+#about-us-heading {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    padding: 1.5em 0 1em;
+}
+
+/* Ensure each paragraph inside the About Us section has proper spacing.
+   Adds bottom padding to separate paragraphs visually and enhance readability */
+#about-us-paragraph p {
+    padding-bottom: 1em;
+}
+
+/* Center the metric container within the section.
+   Uses `flexbox` to distribute child elements evenly while keeping alignment centered */
+#metric-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Arrange metric boxes in a horizontal layout.
+   Uses `flexbox` with `column-gap` to create spacing between metric items.
+   Adds a top margin to separate the section from other content */
+.metric-box {
+    display: flex;
+    column-gap: 2em;
+    margin-top: 3rem;
+}
+
+/* Style the individual metric content boxes */
+.metric-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 2em;
+    border-radius: clamp(30px, 2vw, 30px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 25vw;
+    height: 25vw;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+/* Apply unique border colors to each metric content box using nth-child() */
+.metric-content:nth-child(1) {
+    border: 0.15em solid var(--primary-colour);
+}
+
+.metric-content:nth-child(2) {
+    border: 0.15em solid var(--secondary-colour-four);
+}
+
+.metric-content:nth-child(3) {
+    border: 0.15em solid var(--secondary-colour-two);
+}
+
+/* Limit the metric images to 20% of the container width.
+   Ensures images remain proportionally small while maintaining visibility */
+.metric-image {
+    width: 20%;
+}
+
+/* Style the paragraph inside metric content boxes.
+   - Centers the text horizontally for consistency.
+   - Limits width to 80% of the container to prevent overly wide text blocks */
+.metric-content p {
+    text-align: center;
+    width: 80%;
+}
+
+/*
+   ============================================================
+   CONTACT US SECTION
+   ============================================================
+*/
+
+/* Adds spacing below the heading in the contact section */
+#get-in-touch-heading {
+    padding-bottom: 50px;
+}
+
+/* Defines the layout of the contact section, including the form and footer links */
+#contact-container {
+    display: flex;
+    column-gap: 5em;
+    width: 100%;
+}
+
+/* Sets the width allocation for the contact form container */
+#form-container {
+    flex: 0.5;
+}
+
+/* Styles the form by aligning inputs in a column with consistent spacing */
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+
+/* Defines the appearance of input fields and text areas */
+input, textarea {
+    width: 100%;
+    min-width: 350px;
+    padding: 10px;
+    margin-top: 5px;
+    border: 0.18em solid var(--text-colour-two);
+    border-radius: clamp(10px, 1vw, 30px);
+    font-size: 16px;
+    background-color: var(--bg-colour);
+}
+
+/* Styles placeholder text inside input fields and text areas */
+input::placeholder, textarea::placeholder {
+    font-family: 'inter', sans-serif;
+    font-size: clamp(14px, 1vw, 40px);
+    color: var(--text-colour-two);
+    line-height: clamp(25px, 1.5vw, 100px);
+}
+
+/* Customises the background colour of the Shoelace <sl-dialog> component.
+   The `::part(panel)` selector targets the dialog's main panel */
+sl-dialog::part(panel) {
+    background-color: var(--bg-colour);
+}
+
+/* Creates a gradient effect when input fields and text areas are hovered */
+input:hover, textarea:hover {
+    border: 0.18em solid transparent;
+    background: linear-gradient(var(--bg-colour), var(--bg-colour)) padding-box,
+    linear-gradient(45deg,
+            var(--primary-colour) 20%,
+            var(--secondary-colour-one) 40%,
+            var(--secondary-colour-two) 60%,
+            var(--secondary-colour-three) 80%,
+            var(--secondary-colour-four) 100%
+    ) border-box;
+}
+
+/* Ensures the text area is resizable only vertically and has a minimum height */
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Sets a fixed width for the send button */
+#send-button {
+    width: 10em;
+}
+
+/* Arranges footer links in a horizontal layout with spacing between sections */
+#footer-links {
+    display: flex;
+    column-gap: 2em;
+}
+
+/* Defines the layout and spacing for the policies and help sections */
+#policies-container, #need-help-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.9em;
+    width: 100%;
+    min-width: 150px;
+}
+
+/* Styles the links inside the policies and help sections */
+#policies-container a, #need-help-container a {
+    font-size: clamp(14px, 1vw, 40px);
+    color: var(--text-colour-two);
+}
+
+/* Styles the section headings in the policies and help containers */
+#policies-container h5, #need-help-container h5 {
+    text-transform: uppercase;
+    color: var(--text-colour-one);
+    font-size: clamp(14px, 1vw, 40px);
+}
+
+/*
+   ============================================================
+   RESPONSIVE DESIGN MEDIA QUERIES
+   ============================================================
+*/
+
+/* DESKTOP OR LARGER TABLETS  */
+@media screen and (max-width: 1024px) {
+    /* Display the burger menu icon when the screen width
+       is less than 1024px (tablet view) */
+    .burger-label {
+        display: flex;
+        position: absolute;
+        top: 1em;
+        right: 5vw;
+    }
+
+    /* Hide the standard navigation links on tablet screens
+       to use the burger menu instead */
+    #nav-list {
+        display: none;
+    }
+
+    /* Display the navigation links in a vertical layout when the hamburger menu is
+       toggled on tablet screens and apply different styling */
+    nav input:checked ~ #nav-list {
+        display: flex;
+        position: fixed;
+        background-color: var(--bg-colour);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        flex-direction: column; /* Nav links are not stacked vertically */
+        text-align: center;
+        padding: 1em;
+        left: 25%; /* Center the links */
+    }
+
+    /* Add vertical spacing between navigation items when displayed in the burger menu */
+    #nav-list li {
+        padding: 0.5em 0;
+    }
+
+    /* 3 watch faces on the screen for tablet views */
+    .watch-face {
+        flex: 0 0 33.33%;
+    }
+}
+
+/* MOBILE OR TABLETS */
+@media screen and (max-width: 768px) {
+    #mindband-heading, .section-heading {
+        text-align: center; /* Center align the main heading text on mobile devices */
+    }
+
+    .section-heading {
+        padding-bottom: 50px;
+    }
+
+    /* Stack the header content vertically and center it
+       for better readability on mobile devices */
+    .header-content-container {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 50px;
+    }
+
+    /* Move images below text content on mobile screens to optimise the visual layout */
+    .header-left-container {
+        order: 2;
+    }
+
+    /* Hide the description text on mobile devices to simplify the interface
+       and save screen space */
+    #mindband-description {
+        display: none;
+    }
+
+    /* Align the star scribble image to the left on mobile screens for
+       better visual balance */
+    #star-scribble-container {
+        justify-content: flex-start;
+    }
+
+    /* Hide the 'Learn More' button on mobile devices to reduce
+       clutter and save screen space */
+    #learn-more-button {
+        display: none;
+    }
+
+    /* Green watches and shoelace dialog component are stacked vertically and
+       centered horizontally */
+    #how-it-works-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #how-it-works-right {
+        justify-content: center;
+    }
+
+    /* Adjust size of green watches */
+    #green-watches {
+        width: 60vw;
+    }
+
+    .watch-face {
+        flex: 0 0 50%; /* 2 watch faces on the screen */
+    }
+
+    #about-us-heading, #about-us-paragraph p {
+        text-align: center;
+        padding: 30px;
+    }
+
+    #about-us-heading {
+        padding-bottom: 0;
+    }
+
+    #about-us-paragraph p {
+        padding-bottom: 0;
+    }
+
+    /* Metric containers are stacked vertically */
+    .metric-box {
+        flex-direction: column;
+        row-gap: 2em;
+    }
+
+    .metric-content {
+        min-width: 250px;
+        min-height: 250px;
+    }
+
+    #contact-container {
+        flex-direction: column;
+        row-gap: 5em;
+        margin-bottom: 100px;
+    }
+}
+
+/* SMALL MOBILE DEVICES */
+@media screen and (max-width: 620px) {
+    .watch-face {
+        flex: 0 0 100%; /* 1 watch face on the screen */
     }
 }
